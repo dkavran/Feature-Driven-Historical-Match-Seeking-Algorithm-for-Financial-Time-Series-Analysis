@@ -33,7 +33,7 @@ Examples of first-order features include Exponential Weighted Moving Averages (E
 
 **Second-order features are defined as percentage (%) differences between all combinations of first-order features**.
 
-These are calculated as `((feature_1 / feature_2) - 1) x 100`. The total number of second-order features follows the combination formula: `n! / (r! (n-r)!)`, where `n` = number of first-order features and `r` = 2.
+These are calculated as `((Feature 1 / Feature 2) - 1) x 100`. The total number of second-order features follows the combination formula: `n! / (r! (n-r)!)`, where `n` = number of first-order features and `r` = 2.
 
 These second-order features capture the technical relationship structure between calculated indicators (e.g. EWMAs) and collectively describe the market’s technical state for each day.
 
