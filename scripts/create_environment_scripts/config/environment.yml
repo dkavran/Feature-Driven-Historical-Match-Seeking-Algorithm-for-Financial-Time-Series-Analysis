@@ -1,0 +1,10 @@
+name: whiteshark
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - brotlipy
+  - ipykernel
+  - nb_conda_kernels
+  - pip
+  - python=3.8.13
