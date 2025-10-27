@@ -114,6 +114,8 @@ Best (i.e. closest) K matches are used for further analysis.
 | 17. 07. 2014   | 0.083463245060768 |
 | 06. 04. 2022  | 0.059935517152546 |
 
+### Interpretation of the example output results
+
 The results show that the technical state on 06.04.2022 is more similar to that on 07.02.2025 (lower distance) than the state on 17.07.2014.
 
 ## Running the Algorithm
