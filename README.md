@@ -126,7 +126,7 @@ Requirements:
 
 The algorithm can be executed from the `/scripts` as: `./run_historical_matching.bat`. If the required environment does not yet exist, it will be created automatically.
 
-Algorithm parameters inside the `./run_historical_matching.bat` are:
+Algorithm parameters (used in the `/scripts/run_historical_matching.bat`):
 - **K_NEIGHBORS**: Number of most similar matching days to return. Higher values return more historical matches.
 - **INDIVIDUAL_FEATURE_DIFF_THRESHOLD**: Second-order feature percentage (%) tolerance used by the custom distance function.
 - **HISTORY_SPAN_START_YEAR**: Starting year for the historical search window. If None, use full available history.
