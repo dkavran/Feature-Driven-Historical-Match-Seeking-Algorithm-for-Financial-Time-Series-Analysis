@@ -2,21 +2,21 @@
 A Python-based module for detecting historical matches in time series of financial market data.
 ---
 
-The price-series match-seeking algorithm is designed to identify similar price patterns within historical time-series datasets. It operates on both raw price data and first-order derived features (e.g., technical analysis indicators).
+The price-series match-seeking algorithm is designed to identify similar price patterns within historical financial time-series datasets. It operates on both raw price data and first-order derived features (e.g., technical analysis indicators).
 
-The provided source code implements the historical pattern-matching module - one component within the complete processing pipeline.
+The provided source code implements the historical pattern-matching module — one component within the complete processing pipeline.
 
 This repository does not include:
 - Data acquisition (example raw data is provided in the `/raw_data`),
 - Features (e.g. technical indicators) computation (example first-order derived features - EWMAs are provided in the `/first_order_features_data`),
-- Analysis and interpretation of the data (prediction)
+- Analysis and interpretation of the data (prediction).
 
 
 ### Practical Use:
 This module locates technically similar points in past data based on the defined set of most recent time bar(s) and their calculated features, enabling pattern recognition and comparative analysis within historical market data.
 
 ### Algorithm inputs:
-- Financial trading data time series in Yahoo Finance format (Open, High, Low, Close, Volume Dividends and splits).
+- Financial trading data time series in Yahoo Finance format (Open, High, Low, Close, Volume, Dividends and splits).
 - Any number of additional features (e.g., moving averages, custom or complex indicators).
 - A target date for which historical matches (i.e., similar dates) are identified.
 
@@ -69,7 +69,7 @@ Calculated second-order features (% differences between all combinations of firs
 | 5 days   |          /               |        /                |           /             |              /          | 
 
 Results in the table above can be interpreted as:
-- Close price was -0.693098409% below the 2 day EWMA, -1.106620859% below the 3 day EWMA and -1.49676837% below the 5 day EWMA.
+- The closing price was -0.693098409% below the 2 day EWMA, -1.106620859% below the 3 day EWMA and -1.49676837% below the 5 day EWMA.
 - 2 day EWMA was -0.416408619% below the 3 day EWMA and -0.809279084% below the 5 day EWMA.
 - 3 day EWMA was -0.394513272% below the 5 day EWMA.
 
@@ -94,7 +94,7 @@ Features of the target date - **07. 02. 2025**:
 
 The matching process proceeds as follows:
 1. First, certain preconditions must be satisfied. The process begins by calculating the differences between the features of the target date and those of all previous historical dates (denoted as Difference 1, Difference 2, etc.). If any absolute difference exceeds a predefined threshold, or if the sign of any second-order feature differs (positive vs. negative), the date is excluded as a potential match. Otherwise, it is considered a valid match.
-2. For each valid match, calculate the selected distance metric between its and the target date's features.
+2. For each valid match, calculate the selected distance metric between its feature vector and that of the target date.
 
 The best (i.e. closest) K matches are used for further analysis.
 
@@ -131,7 +131,7 @@ The algorithm can be executed from the `/scripts` as: `./run_historical_matching
 Algorithm parameters (used in the `/scripts/run_historical_matching.bat`):
 - **K_NEIGHBORS**: Number of most similar matching days to return. Higher values yield more historical matches.
 - **INDIVIDUAL_FEATURE_DIFF_THRESHOLD**: Second-order feature percentage (%) tolerance used by the custom distance function.
-- **HISTORY_SPAN_START_YEAR**: Starting year for the historical search window. If None, use full available history.
-- **TARGET_DATE**: Target day to match against in the YYYY-MM-DD form. If None, the last available date in the dataset is used.
+- **HISTORY_SPAN_START_YEAR**: Starting year for the historical search window. If `None`, use full available history.
+- **TARGET_DATE**: Target day to match against in the YYYY-MM-DD form. If `None`, the last available date in the dataset is used.
 - **DISTANCE_METRIC**: Distance metric for KNN. Allowed: minkowski, chebyshev, and euclidean.
 - **DISTANCE_METRIC_POWER**: Minkowski 'p' power (only used when DISTANCE_METRIC=minkowski). Ignored for other metrics. Larger p emphasizes the largest coordinate differences.
